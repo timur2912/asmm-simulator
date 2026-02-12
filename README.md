@@ -34,13 +34,12 @@ The `reproduce` command writes:
 - `outputs/summary.csv` (all \(\gamma\) and both strategies)
 - `outputs/gamma_<...>_table.csv`
 - `outputs/gamma_<...>_profit_hist.png`
-- `outputs/example_path_gamma_0.1.png`
 
 ## Notes on implementation choices
 
-To make the simulation stable and faithful to the paper’s “distance” language:
+Key modeling choices are configurable to reflect paper ambiguities:
 
-- Quotes are **not allowed to cross** the mid-price by default (distances floored at 0).
+- Quotes may cross the mid-price (`allow_cross=True`), but intensities treat \(\delta\) as a distance (`floor_intensity_delta=True`).
 - Bernoulli fill probability is capped: \(p = \min(1, \lambda(\delta)\,dt)\).
 
-Both behaviors are configurable via CLI flags.
+See `python -m asmm_simulator reproduce --help` for flags.

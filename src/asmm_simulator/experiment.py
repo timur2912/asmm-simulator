@@ -10,7 +10,19 @@ from .plots import plot_profit_hist
 from .sim import SimConfig, simulate_pair
 
 
-def reproduce(*, out_dir: Path, n_paths: int, seed: int, gammas: list[float] | None = None) -> pd.DataFrame:
+def reproduce(
+    *,
+    out_dir: Path,
+    n_paths: int,
+    seed: int,
+    gammas: list[float] | None = None,
+    spread_model: str = "constant",
+    price_model: str = "rademacher",
+    execution_model: str = "bernoulli",
+    allow_cross: bool = True,
+    floor_intensity_delta: bool = True,
+    cap_prob: bool = True,
+) -> pd.DataFrame:
     """Run the paper-style reproduction experiment and write CSV/PNG outputs."""
 
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -20,7 +32,17 @@ def reproduce(*, out_dir: Path, n_paths: int, seed: int, gammas: list[float] | N
     rows: list[dict] = []
 
     for gamma in gammas:
-        config = SimConfig(gamma=gamma, n_paths=n_paths, seed=seed)
+        config = SimConfig(
+            gamma=gamma,
+            n_paths=n_paths,
+            seed=seed,
+            spread_model=spread_model,  # type: ignore[arg-type]
+            price_model=price_model,  # type: ignore[arg-type]
+            execution_model=execution_model,  # type: ignore[arg-type]
+            allow_cross=allow_cross,
+            floor_intensity_delta=floor_intensity_delta,
+            cap_prob=cap_prob,
+        )
         results = simulate_pair(params=params, config=config)
 
         Sp = spread_constant(gamma=gamma, k=params.k)
@@ -38,7 +60,7 @@ def reproduce(*, out_dir: Path, n_paths: int, seed: int, gammas: list[float] | N
             )
 
         # Per-gamma artifacts
-        df_gamma = pd.DataFrame([r for r in rows if r["gamma"] == gamma and r["spread_model"] == "constant"])
+        df_gamma = pd.DataFrame([r for r in rows if r["gamma"] == gamma])
         df_gamma.to_csv(out_dir / f"gamma_{gamma}_table.csv", index=False)
 
         plot_profit_hist(
