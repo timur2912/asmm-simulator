@@ -1,0 +1,7 @@
+gamma,strategy,spread,profit_mean,profit_std,qT_mean,qT_std,n_paths,seed,spread_model,price_model,execution_model,allow_cross,floor_intensity_delta,cap_prob
+0.01,inventory,1.3289085437337023,68.97631993281792,8.747939130144783,-0.058,5.227041032740987,1000,0,constant,rademacher,bernoulli,True,True,True
+0.01,symmetric,1.3289085437337023,69.52181880107057,12.980607023037908,-0.118,8.664129681805504,1000,0,constant,rademacher,bernoulli,True,True,True
+0.1,inventory,1.2907704227514234,64.39101940331781,6.220038465689657,0.051,2.9575574628646093,1000,0,constant,rademacher,bernoulli,True,True,True
+0.1,symmetric,1.2907704227514234,69.48970134214053,12.831698886968745,-0.082,8.808340528321033,1000,0,constant,rademacher,bernoulli,True,True,True
+0.5,inventory,1.1507282898071234,23.335788946768858,4.770278934145397,0.052,1.98273226312259,1000,0,constant,rademacher,bernoulli,True,True,True
+0.5,symmetric,1.1507282898071234,68.81673763616556,12.981016369551902,0.039,9.107272995876505,1000,0,constant,rademacher,bernoulli,True,True,True

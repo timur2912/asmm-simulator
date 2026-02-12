@@ -1,0 +1,3 @@
+gamma,strategy,spread,profit_mean,profit_std,qT_mean,qT_std,n_paths,seed,spread_model,price_model,execution_model,allow_cross,floor_intensity_delta,cap_prob
+0.5,inventory,1.1507282898071234,23.335788946768858,4.770278934145397,0.052,1.98273226312259,1000,0,constant,rademacher,bernoulli,True,True,True
+0.5,symmetric,1.1507282898071234,68.81673763616556,12.981016369551902,0.039,9.107272995876505,1000,0,constant,rademacher,bernoulli,True,True,True
