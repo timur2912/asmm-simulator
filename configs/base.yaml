@@ -1,0 +1,19 @@
+S0: 100.0
+T: 1.0
+dt: 0.005
+sigma: 2.0
+A: 140.0
+k: 1.5
+q0: 0
+X0: 0.0
+gamma: 0.1
+n_paths: 1000
+price_model: rademacher
+execution_model: bernoulli
+spread_model: constant
+constraints:
+  clip_delta: false
+  clip_prob: true
+  prob_cap: 1.0
+seed: 42
+use_crn: true
